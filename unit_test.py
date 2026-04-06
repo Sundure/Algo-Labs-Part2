@@ -1,55 +1,31 @@
 import unittest
-from lab1 import Lab1
+from lab2 import Lab2
+from lab2 import Hamster
 
-# Unittest
-class TestZigZagSort(unittest.TestCase):
-    def test_required_matrices(self):
+class TestHamsterMaxValue(unittest.TestCase):
+    def test(self):
         test_cases = [
             {
-                "name": "m=5, n=5",
-                "matrix": [
-                    [1, 2, 3, 4, 5],
-                    [6, 7, 8, 9, 10],
-                    [11, 12, 13, 14, 15],
-                    [16, 17, 18, 19, 20],
-                    [21, 22, 23, 24, 25]
-                ],
-                "expected": [1, 2, 6, 11, 7, 3, 4, 8, 12, 16, 21, 17, 13, 9, 5, 10, 14, 18, 22, 23, 19, 15, 20, 24, 25]
+                "hamsters": [Hamster(1,2), Hamster(2,2),Hamster(3,1)],
+                "food": 10,
+                "excepted": 3
             },
             {
-                "name": "m=2, n=4",
-                "matrix": [
-                    [1, 2, 3, 4],
-                    [5, 6, 7, 8]
-                ],
-                "expected": [1, 2, 5, 6, 3, 4, 7, 8]
+                "hamsters": [Hamster(5,0), Hamster(2,2),Hamster(1,4), Hamster(5,1)],
+                "food": 19,
+                "excepted": 4
             },
             {
-                "name": "m=6, n=1",
-                "matrix": [
-                    [1], 
-                    [2], 
-                    [3], 
-                    [4], 
-                    [5], 
-                    [6]
-                ],
-                "expected": [1, 2, 3, 4, 5, 6]
+                "hamsters": [Hamster(5,0), Hamster(2,2),Hamster(1,4),],
+                "food": 1,
+                "excepted": 1
             },
-            {
-                "name": "m=1, n=1",
-                "matrix": [
-                [1]
-            ],
-                "expected": [1]
-            }
+
         ]
 
         for case in test_cases:
-            with self.subTest(msg=case["name"]):
-                actual_result = Lab1.zig_zag_sort(case["matrix"])
-                self.assertEqual(actual_result, case["expected"])
+            actual_result = Lab2.calculate_hamsters(case["hamsters"], case["food"])
+            self.assertEqual(actual_result, case["excepted"])
 
 if __name__ == '__main__':
     unittest.main()
-
